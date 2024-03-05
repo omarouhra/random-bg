@@ -1,17 +1,18 @@
 import { useState } from "react";
 
 function App() {
-  const [index, setIndex] = useState(0);
-  const colors = ["red", "green", "yellow", "purple", "black"];
+  const [color, setColor] = useState("#fffff");
 
   const getRandomColor = () => {
-    let randomNumber = Math.floor(Math.random() * colors.length);
-    setIndex(randomNumber);
+    let randomColor =
+      "#" + ((Math.random() * 0xffffff) << 0).toString(16).padStart(6, "0");
+
+    setColor(randomColor);
   };
 
   return (
-    <div style={{ backgroundColor: colors[index], height: "100vh" }}>
-      <button onClick={() => getRandomColor()}>Change color {index}</button>
+    <div style={{ backgroundColor: color, height: "100vh" }}>
+      <button onClick={() => getRandomColor()}>Change color {color}</button>
     </div>
   );
 }
